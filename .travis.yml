@@ -7,7 +7,14 @@ php:
   - hhvm
 
 before_script:
-  - composer --dev install
+  - composer self-update
+  - composer require satooshi/php-coveralls:dev-master --no-update --dev
+  - composer install
 
 script:
-  - phpunit -c phpunit.xml.dist
+  - mkdir -p build/logs
+  - phpunit --coverage-text
+  - ./vendor/bin/phpcs src --standard=psr2
+
+after_script:
+  - php vendor/bin/coveralls
