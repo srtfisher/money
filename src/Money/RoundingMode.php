@@ -20,68 +20,68 @@ class RoundingMode
     const ROUND_HALF_ODD = PHP_ROUND_HALF_ODD;
 
     /**
-     * @var
-     */
+  * @var
+  */
     private $roundingMode;
 
     /**
-     * Create a rounding mode
-     * @param int $rounding_mode
-     * @throws InvalidArgumentException
-     */
+  * Create a rounding mode
+  * @param int $rounding_mode
+  * @throws InvalidArgumentException
+  */
     public function __construct($rounding_mode)
     {
-        if (!in_array(
-            $rounding_mode,
-            array(self::ROUND_HALF_DOWN, self::ROUND_HALF_EVEN, self::ROUND_HALF_ODD, self::ROUND_HALF_UP)
-        )) {
-            throw new InvalidArgumentException(
-                'Rounding mode should be RoundingMode::ROUND_HALF_DOWN | ' .
-                'RoundingMode::ROUND_HALF_EVEN | RoundingMode::ROUND_HALF_ODD | ' .
-                'RoundingMode::ROUND_HALF_UP'
-            );
-        }
-        
-        $this->roundingMode = $rounding_mode;
+     if (!in_array(
+      $rounding_mode,
+      array(self::ROUND_HALF_DOWN, self::ROUND_HALF_EVEN, self::ROUND_HALF_ODD, self::ROUND_HALF_UP)
+     )) {
+      throw new InvalidArgumentException(
+       'Rounding mode should be RoundingMode::ROUND_HALF_DOWN | ' .
+       'RoundingMode::ROUND_HALF_EVEN | RoundingMode::ROUND_HALF_ODD | ' .
+       'RoundingMode::ROUND_HALF_UP'
+      );
+     }
+     
+     $this->roundingMode = $rounding_mode;
     }
 
     /**
-     * @return int
-     */
+  * @return int
+  */
     public function getRoundingMode()
     {
-        return $this->roundingMode;
+     return $this->roundingMode;
     }
 
     /**
-     * @return RoundingMode
-     */
+  * @return RoundingMode
+  */
     public static function halfUp()
     {
-        return new self(self::ROUND_HALF_UP);
+     return new self(self::ROUND_HALF_UP);
     }
 
     /**
-     * @return RoundingMode
-     */
+  * @return RoundingMode
+  */
     public static function halfDown()
     {
-        return new self(self::ROUND_HALF_DOWN);
+     return new self(self::ROUND_HALF_DOWN);
     }
 
     /**
-     * @return RoundingMode
-     */
+  * @return RoundingMode
+  */
     public static function halfEven()
     {
-        return new self(self::ROUND_HALF_EVEN);
+     return new self(self::ROUND_HALF_EVEN);
     }
 
     /**
-     * @return RoundingMode
-     */
+  * @return RoundingMode
+  */
     public static function halfOdd()
     {
-        return new self(self::ROUND_HALF_ODD);
+     return new self(self::ROUND_HALF_ODD);
     }
 }

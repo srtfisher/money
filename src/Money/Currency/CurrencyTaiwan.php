@@ -1,6 +1,12 @@
-<?php namespace Money\Currency;
+<?php
 
-class CurrencyTaiwan extends AbstractCurrency implements CurrencyInterfae {
+namespace Money\Currency;
+
+/**
+ * @package Money
+ * @subpackage Currency
+ */
+class CurrencyTaiwan extends AbstractCurrency implements CurrencyInterface {
   public static function config() {
     return [
       'title' => 'Taiwan New Dollar',

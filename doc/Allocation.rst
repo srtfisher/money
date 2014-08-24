@@ -11,7 +11,7 @@ is to keep handing out the remainder until all money is spent. In other words:
 .. code-block:: php
    
    <?php
-   $profit = Money::EUR(5);
+   $profit = Money::Euro(5);
    list($my_cut, $investors_cut) = $profit->allocate(70, 30);
    // $my_cut is 4 cents, $investors_cut is 1 cent
 

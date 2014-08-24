@@ -1,9 +1,15 @@
-<?php namespace Money\Currency;
+<?php
 
-class CurrencyKoruna extends AbstractCurrency implements CurrencyInterfae {
+namespace Money\Currency;
+
+/**
+ * @package Money
+ * @subpackage Currency
+ */
+class CurrencyKoruna extends AbstractCurrency implements CurrencyInterface {
   public static function config() {
     return [
-      'title' => 'Danish Krone',
+     'title' => 'Danish Krone',
 			'symbol_left' => 'kr',
 			'symbol_right' => '',
 			'code' => 'DKK',

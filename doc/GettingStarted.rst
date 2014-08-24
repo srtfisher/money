@@ -23,7 +23,7 @@ You'll need an autoloader. Money is PSR-0 compatible, so if you are using the Sy
    
    $loader = new UniversalClassLoader;
    $loader->registerNamespaces(array(
-      'Money' => __DIR__ . '/vendor/money/lib/',
+   'Money' => __DIR__ . '/vendor/money/lib/',
    ));
    $loader->register();
-      
+   

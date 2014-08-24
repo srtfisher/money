@@ -10,6 +10,10 @@
 
 namespace Money;
 
+/**
+ * @package Money
+ * @subpackage Currency
+ */
 class Currency
 {
     /** @var string */
@@ -19,44 +23,44 @@ class Currency
     private static $currencies;
 
     /**
-     * @param string $name
-     * @throws UnknownCurrencyException
-     */
+  * @param string $name
+  * @throws UnknownCurrencyException
+  */
     public function __construct($name)
     {
-        if(!isset(static::$currencies)) {
-           static::$currencies = require __DIR__.'/currencies.php';
-        }
+     if(!isset(static::$currencies)) {
+     static::$currencies = require __DIR__.'/currencies.php';
+     }
 
-        if (!array_key_exists($name, static::$currencies)) {
-            throw new UnknownCurrencyException($name);
-        }
-        $this->name = $name;
+     if (!array_key_exists($name, static::$currencies)) {
+      throw new UnknownCurrencyException($name);
+     }
+     $this->name = $name;
     }
 
 
     /**
-     * @return string
-     */
+  * @return string
+  */
     public function getName()
     {
-        return $this->name;
+     return $this->name;
     }
 
     /**
-     * @param Currency $other
-     * @return bool
-     */
+  * @param Currency $other
+  * @return bool
+  */
     public function equals(Currency $other)
     {
-        return $this->name === $other->name;
+     return $this->name === $other->name;
     }
 
     /**
-     * @return string
-     */
+  * @return string
+  */
     public function __toString()
     {
-        return $this->getName();
+     return $this->getName();
     }
 }

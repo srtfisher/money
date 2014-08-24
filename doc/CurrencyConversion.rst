@@ -25,6 +25,6 @@ After you have the pair, it's dead simple:
 .. code:: php
    
    <?php
-   $eur100 = Money::EUR(100);
+   $eur100 = Money::Euro(100);
    $usd125 = $pair->convert($eur100);
 

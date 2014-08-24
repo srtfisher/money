@@ -1,4 +1,6 @@
-<?php namespace Money\Currency;
+<?php
+
+namespace Money\Currency;
 
 interface CurrencyInterface {
   public static function config();

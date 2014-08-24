@@ -6,41 +6,41 @@
     "homepage": "http://verraes.net/2011/04/fowler-money-pattern-in-php/",
     "license": "MIT",
     "authors": [
-        {
-            "name": "Mathias Verraes",
-            "email": "mathias@verraes.net",
-            "homepage": "http://verraes.net"
-        },
-        {
-            "name": "Sean Fisher",
-            "email": "hi@seanfisher.co",
-            "homepage": "http://seanfisher.co/"
-        }
+     {
+      "name": "Mathias Verraes",
+      "email": "mathias@verraes.net",
+      "homepage": "http://verraes.net"
+     },
+     {
+      "name": "Sean Fisher",
+      "email": "hi@seanfisher.co",
+      "homepage": "http://seanfisher.co/"
+     }
     ],
     "require": {
-        "php": ">=5.3.3"
+     "php": ">=5.3.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.*"
+     "phpunit/phpunit": "4.*"
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.3.x-dev"
-        }
+     "branch-alias": {
+      "dev-master": "1.3.x-dev"
+     }
     },
     "autoload": {
-        "psr-0": {
-            "Money": "src"
-        }
+     "psr-0": {
+      "Money": "src"
+     }
     },
 
     "config": {
-        "bin-dir": "bin"
+     "bin-dir": "bin"
     },
     "suggest": {
-        "TheBigBrainsCompany/TbbcMoneyBundle": "Very complete Symfony2 bundle with support for Twig, Doctrine, Forms, ...",
-        "pink-tie/money-bundle": "Pink-Tie's Symfony2 integration with Money library",
-        "Sylius/SyliusMoneyBundle": "Sylius' Symfony2 integration with Money library"
+     "TheBigBrainsCompany/TbbcMoneyBundle": "Very complete Symfony2 bundle with support for Twig, Doctrine, Forms, ...",
+     "pink-tie/money-bundle": "Pink-Tie's Symfony2 integration with Money library",
+     "Sylius/SyliusMoneyBundle": "Sylius' Symfony2 integration with Money library"
     },
     "minimum-stability": "dev"
 }

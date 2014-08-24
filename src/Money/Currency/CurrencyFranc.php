@@ -1,6 +1,12 @@
-<?php namespace Money\Currency;
+<?php
 
-class CurrencyFranc extends AbstractCurrency implements CurrencyInterfae {
+namespace Money\Currency;
+
+/**
+ * @package Money
+ * @subpackage Currency
+ */
+class CurrencyFranc extends AbstractCurrency implements CurrencyInterface {
   public static function config() {
     return [
       'title' => 'Swiss Franc',

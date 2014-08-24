@@ -1,6 +1,12 @@
-<?php namespace Money\Currency;
+<?php
 
-class CurrencySheqel extends AbstractCurrency implements CurrencyInterfae {
+namespace Money\Currency;
+
+/**
+ * @package Money
+ * @subpackage Currency
+ */
+class CurrencySheqel extends AbstractCurrency implements CurrencyInterface {
   public static function config() {
     return [
       'title' => 'Israeli New Sheqel',

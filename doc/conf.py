@@ -214,7 +214,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'money', u'Money Documentation',
-     [u'Mathias Verraes'], 1)
+  [u'Mathias Verraes'], 1)
 ]
 
 # If true, show URL addresses after external links.

@@ -1,6 +1,12 @@
-<?php namespace Money\Currency;
+<?php
 
-class CurrencyPhilippinePeso extends AbstractCurrency implements CurrencyInterfae {
+namespace Money\Currency;
+
+/**
+ * @package Money
+ * @subpackage Currency
+ */
+class CurrencyPhilippinePeso extends AbstractCurrency implements CurrencyInterface {
   public static function config() {
     return [
       'title' => 'Philippine Peso',

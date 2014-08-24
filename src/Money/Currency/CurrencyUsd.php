@@ -1,6 +1,12 @@
-<?php namespace Money\Currency;
+<?php
 
-class CurrencyUsd extends AbstractCurrency implements CurrencyInterfae {
+namespace Money\Currency;
+
+/**
+ * @package Money
+ * @subpackage Currency
+ */
+class CurrencyUSD extends AbstractCurrency implements CurrencyInterface {
   public static function config() {
     return [
       'title' => 'U.S. Dollar',

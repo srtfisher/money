@@ -15,13 +15,13 @@ you need to represent money, use this Money value object.
 
 use Money\Money;
 
-$fiveEur = Money::EUR(500);
+$fiveEur = Money::Euro(500);
 $tenEur = $fiveEur->add($fiveEur);
 
 list($part1, $part2, $part3) = $tenEur->allocate(array(1, 1, 1));
-assert($part1->equals(Money::EUR(334)));
-assert($part2->equals(Money::EUR(333)));
-assert($part3->equals(Money::EUR(333)));
+assert($part1->equals(Money::Euro(334)));
+assert($part2->equals(Money::Euro(333)));
+assert($part3->equals(Money::Euro(333)));
 ```
 
 The documentation is available at http://money.readthedocs.org
@@ -35,7 +35,7 @@ Install the library using [composer][1]. Add the following to your `composer.jso
 ```json
 {
     "require": {
-        "mathiasverraes/money": "dev-master"
+     "mathiasverraes/money": "dev-master"
     },
     "minimum-stability": "dev"    
 }
