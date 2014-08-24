@@ -8,13 +8,10 @@ php:
 
 before_script:
   - composer self-update
-  - composer require satooshi/php-coveralls:dev-master --no-update --dev
   - composer install
+  - pyrus install pear/PHP_CodeSniffer
+  - phpenv rehash
 
 script:
-  - mkdir -p build/logs
+  - phpcs --standard=psr2 src/
   - phpunit --coverage-text
-  - ./vendor/bin/phpcs src --standard=psr2
-
-after_script:
-  - php vendor/bin/coveralls
