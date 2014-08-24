@@ -1,5 +1,5 @@
 {
-    "name": "mathiasverraes/money",
+    "name": "srtfisher/money",
     "description": "PHP implementation of Fowler's Money pattern",
     "type": "library",
     "keywords": [ "Money", "Value Object", "Generic Sub-domain", "domain-driven design", "DDD" ],
@@ -10,6 +10,11 @@
             "name": "Mathias Verraes",
             "email": "mathias@verraes.net",
             "homepage": "http://verraes.net"
+        },
+        {
+            "name": "Sean Fisher",
+            "email": "hi@seanfisher.co",
+            "homepage": "http://seanfisher.co/"
         }
     ],
     "require": {
@@ -33,7 +38,7 @@
         "bin-dir": "bin"
     },
     "suggest": {
-        "TheBigBrainsCompany/TbbcMoneyBundle": "Very complete Symfony2 bundle with support for Twig, Doctrine, Forms, ...", 
+        "TheBigBrainsCompany/TbbcMoneyBundle": "Very complete Symfony2 bundle with support for Twig, Doctrine, Forms, ...",
         "pink-tie/money-bundle": "Pink-Tie's Symfony2 integration with Money library",
         "Sylius/SyliusMoneyBundle": "Sylius' Symfony2 integration with Money library"
     },
