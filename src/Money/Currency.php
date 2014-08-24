@@ -9,6 +9,7 @@
  */
 
 namespace Money;
+use Money\Exception\UnknownCurrencyException;
 
 /**
  * @package Money
@@ -16,49 +17,47 @@ namespace Money;
  */
 class Currency
 {
-    /** @var string */
-    private $name;
+  /** @var string */
+  private $name;
 
-    /** @var array */
-    private static $currencies;
+  /**
+   * @param string $name
+   * @throws UnknownCurrencyException
+   */
+  public function __construct($name)
+  {
+    if(!isset(static::$currencies)) {
+      static::$currencies = require __DIR__.'/currencies.php';
+    }
 
-    /**
-  * @param string $name
-  * @throws UnknownCurrencyException
-  */
-    public function __construct($name)
-    {
-     if(!isset(static::$currencies)) {
-     static::$currencies = require __DIR__.'/currencies.php';
-     }
-
-     if (!array_key_exists($name, static::$currencies)) {
+    if (!array_key_exists($name, static::$currencies)) {
       throw new UnknownCurrencyException($name);
-     }
-     $this->name = $name;
     }
 
+    $this->name = $name;
+  }
+
+
+  /**
+   * @return string
+   */
+  public function getName()
+  {
+    return $this->name;
+  }
+
+  /**
+   * @param Currency $other
+   * @return bool
+   */
+  public function equals(Currency $other)
+  {
+    return $this->name === $other->name;
+  }
 
     /**
-  * @return string
-  */
-    public function getName()
-    {
-     return $this->name;
-    }
-
-    /**
-  * @param Currency $other
-  * @return bool
-  */
-    public function equals(Currency $other)
-    {
-     return $this->name === $other->name;
-    }
-
-    /**
-  * @return string
-  */
+    * @return string
+    */
     public function __toString()
     {
      return $this->getName();

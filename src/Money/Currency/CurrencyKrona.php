@@ -6,10 +6,6 @@ namespace Money\Currency;
  * @package Money
  * @subpackage Currency
  */
-/**
- * @package Money
- * @subpackage Currency
- */
 class CurrencyKrona extends AbstractCurrency implements CurrencyInterface {
   public static function config() {
     return [

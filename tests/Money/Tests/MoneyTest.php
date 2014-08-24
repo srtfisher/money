@@ -14,6 +14,7 @@ use InvalidArgumentException;
 use PHPUnit_Framework_TestCase;
 use Money\Money;
 use Money\Currency;
+use Money\Currency\Proxy as CurrencyProxy;
 
 class MoneyTest extends PHPUnit_Framework_TestCase
 {
@@ -31,7 +32,7 @@ class MoneyTest extends PHPUnit_Framework_TestCase
 
   public function testGetters()
   {
-   $m = new Money(100, $euro = new Currency('EUR'));
+   $m = new Money(100, $euro = CurrencyProxy::determine('EUR'));
    $this->assertEquals(100, $m->getAmount());
    $this->assertEquals($euro, $m->getCurrency());
   }
@@ -41,7 +42,7 @@ class MoneyTest extends PHPUnit_Framework_TestCase
   */
   public function testDecimalsThrowException()
   {
-   $money = new Money(0.01, new Currency('EUR'));
+   $money = new Money(0.01, CurrencyProxy::determine('EUR'));
   }
 
   /**
@@ -49,15 +50,15 @@ class MoneyTest extends PHPUnit_Framework_TestCase
   */
   public function testStringThrowsException()
   {
-   $money = new Money('100', new Currency('EUR'));
+   $money = new Money('100', CurrencyProxy::determine('EUR'));
   }
 
   public function testEquality()
   {
-   $m1 = new Money(100, new Currency('EUR'));
-   $m2 = new Money(100, new Currency('EUR'));
-   $m3 = new Money(100, new Currency('USD'));
-   $m4 = new Money(50, new Currency('EUR'));
+   $m1 = new Money(100, CurrencyProxy::determine('EUR'));
+   $m2 = new Money(100, CurrencyProxy::determine('EUR'));
+   $m3 = new Money(100, CurrencyProxy::determine('USD'));
+   $m4 = new Money(50, CurrencyProxy::determine('EUR'));
 
    $this->assertTrue($m1->equals($m2));
    $this->assertFalse($m1->equals($m3));
@@ -66,10 +67,10 @@ class MoneyTest extends PHPUnit_Framework_TestCase
 
   public function testAddition()
   {
-   $m1 = new Money(100, new Currency('EUR'));
-   $m2 = new Money(100, new Currency('EUR'));
+   $m1 = new Money(100, CurrencyProxy::determine('EUR'));
+   $m2 = new Money(100, CurrencyProxy::determine('EUR'));
    $sum = $m1->add($m2);
-   $expected = new Money(200, new Currency('EUR'));
+   $expected = new Money(200, CurrencyProxy::determine('EUR'));
 
    $this->assertEquals($expected, $sum);
 
@@ -83,17 +84,17 @@ class MoneyTest extends PHPUnit_Framework_TestCase
   */
   public function testDifferentCurrenciesCannotBeAdded()
   {
-   $m1 = new Money(100, new Currency('EUR'));
-   $m2 = new Money(100, new Currency('USD'));
+   $m1 = new Money(100, CurrencyProxy::determine('EUR'));
+   $m2 = new Money(100, CurrencyProxy::determine('USD'));
    $m1->add($m2);
   }
 
   public function testSubtraction()
   {
-   $m1 = new Money(100, new Currency('EUR'));
-   $m2 = new Money(200, new Currency('EUR'));
+   $m1 = new Money(100, CurrencyProxy::determine('EUR'));
+   $m2 = new Money(200, CurrencyProxy::determine('EUR'));
    $diff = $m1->subtract($m2);
-   $expected = new Money(-100, new Currency('EUR'));
+   $expected = new Money(-100, CurrencyProxy::determine('EUR'));
 
    $this->assertEquals($expected, $diff);
 
@@ -107,20 +108,20 @@ class MoneyTest extends PHPUnit_Framework_TestCase
   */
   public function testDifferentCurrenciesCannotBeSubtracted()
   {
-   $m1 = new Money(100, new Currency('EUR'));
-   $m2 = new Money(100, new Currency('USD'));
+   $m1 = new Money(100, CurrencyProxy::determine('EUR'));
+   $m2 = new Money(100, CurrencyProxy::determine('USD'));
    $m1->subtract($m2);
   }
 
   public function testMultiplication()
   {
-   $m = new Money(1, new Currency('EUR'));
+   $m = new Money(1, CurrencyProxy::determine('EUR'));
    $this->assertEquals(
-    new Money(2, new Currency('EUR')),
+    new Money(2, CurrencyProxy::determine('EUR')),
     $m->multiply(1.5)
    );
    $this->assertEquals(
-    new Money(1, new Currency('EUR')),
+    new Money(1, CurrencyProxy::determine('EUR')),
     $m->multiply(1.5, Money::ROUND_HALF_DOWN)
    );
 
@@ -129,17 +130,17 @@ class MoneyTest extends PHPUnit_Framework_TestCase
 
   public function testDivision()
   {
-   $m = new Money(10, new Currency('EUR'));
+   $m = new Money(10, CurrencyProxy::determine('EUR'));
    $this->assertEquals(
-    new Money(3, new Currency('EUR')),
+    new Money(3, CurrencyProxy::determine('EUR')),
     $m->divide(3)
    );
    $this->assertEquals(
-    new Money(2, new Currency('EUR')),
+    new Money(2, CurrencyProxy::determine('EUR')),
     $m->divide(4, Money::ROUND_HALF_EVEN)
    );
    $this->assertEquals(
-    new Money(3, new Currency('EUR')),
+    new Money(3, CurrencyProxy::determine('EUR')),
     $m->divide(3, Money::ROUND_HALF_ODD)
    );
 
@@ -148,9 +149,9 @@ class MoneyTest extends PHPUnit_Framework_TestCase
 
   public function testComparison()
   {
-   $euro1 = new Money(1, new Currency('EUR'));
-   $euro2 = new Money(2, new Currency('EUR'));
-   $usd = new Money(1, new Currency('USD'));
+   $euro1 = new Money(1, CurrencyProxy::determine('EUR'));
+   $euro2 = new Money(2, CurrencyProxy::determine('EUR'));
+   $usd = new Money(1, CurrencyProxy::determine('USD'));
 
    $this->assertTrue($euro2->greaterThan($euro1));
    $this->assertFalse($euro1->greaterThan($euro2));
@@ -172,31 +173,31 @@ class MoneyTest extends PHPUnit_Framework_TestCase
 
   public function testAllocation()
   {
-   $m = new Money(100, new Currency('EUR'));
+   $m = new Money(100, CurrencyProxy::determine('EUR'));
    list($part1, $part2, $part3) = $m->allocate(array(1, 1, 1));
-   $this->assertEquals(new Money(34, new Currency('EUR')), $part1);
-   $this->assertEquals(new Money(33, new Currency('EUR')), $part2);
-   $this->assertEquals(new Money(33, new Currency('EUR')), $part3);
+   $this->assertEquals(new Money(34, CurrencyProxy::determine('EUR')), $part1);
+   $this->assertEquals(new Money(33, CurrencyProxy::determine('EUR')), $part2);
+   $this->assertEquals(new Money(33, CurrencyProxy::determine('EUR')), $part3);
 
-   $m = new Money(101, new Currency('EUR'));
+   $m = new Money(101, CurrencyProxy::determine('EUR'));
    list($part1, $part2, $part3) = $m->allocate(array(1, 1, 1));
-   $this->assertEquals(new Money(34, new Currency('EUR')), $part1);
-   $this->assertEquals(new Money(34, new Currency('EUR')), $part2);
-   $this->assertEquals(new Money(33, new Currency('EUR')), $part3);
+   $this->assertEquals(new Money(34, CurrencyProxy::determine('EUR')), $part1);
+   $this->assertEquals(new Money(34, CurrencyProxy::determine('EUR')), $part2);
+   $this->assertEquals(new Money(33, CurrencyProxy::determine('EUR')), $part3);
   }
 
   public function testAllocationOrderIsImportant()
   {
 
-   $m = new Money(5, new Currency('EUR'));
+   $m = new Money(5, CurrencyProxy::determine('EUR'));
    list($part1, $part2) = $m->allocate(array(3, 7));
-   $this->assertEquals(new Money(2, new Currency('EUR')), $part1);
-   $this->assertEquals(new Money(3, new Currency('EUR')), $part2);
+   $this->assertEquals(new Money(2, CurrencyProxy::determine('EUR')), $part1);
+   $this->assertEquals(new Money(3, CurrencyProxy::determine('EUR')), $part2);
 
-   $m = new Money(5, new Currency('EUR'));
+   $m = new Money(5, CurrencyProxy::determine('EUR'));
    list($part1, $part2) = $m->allocate(array(7, 3));
-   $this->assertEquals(new Money(4, new Currency('EUR')), $part1);
-   $this->assertEquals(new Money(1, new Currency('EUR')), $part2);
+   $this->assertEquals(new Money(4, CurrencyProxy::determine('EUR')), $part1);
+   $this->assertEquals(new Money(1, CurrencyProxy::determine('EUR')), $part2);
   }
 
   public function testComparators()

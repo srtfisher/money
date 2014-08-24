@@ -1,6 +1,7 @@
 <?php
 
 namespace Money\Currency;
+use Money\Currency\CurrencyInterface;
 
 /**
  * Abstract Currency Object
@@ -21,7 +22,7 @@ abstract class AbstractCurrency {
    * @param Currency $other
    * @return bool
    */
-  public function equals(Currency $other)
+  public function equals(CurrencyInterface $other)
   {
    return $this->getName() === $other->getName();
   }

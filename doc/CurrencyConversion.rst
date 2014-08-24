@@ -7,7 +7,7 @@ You can use the OOP notation to define a pair:
 .. code:: php
    
    <?php
-   $pair = new CurrencyPair(new Currency('EUR'), new Currency('USD'), 1.2500);
+   $pair = new CurrencyPair(CurrencyProxy::determine('EUR'), CurrencyProxy::determine('USD'), 1.2500);
 
 You can also parse ISO notations. For example, the quotation ``EUR/USD 1.2500`` 
 means that one euro is exchanged for 1.2500 US dollars.

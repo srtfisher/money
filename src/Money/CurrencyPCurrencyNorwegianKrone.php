@@ -6,7 +6,7 @@ namespace Money\Currency;
  * @package Money
  * @subpackage Currency
  */
-class CurrencyKrone extends AbstractCurrency implements CurrencyInterface {
+class CurrencyNorwegianKrone extends AbstractCurrency implements CurrencyInterface {
   public static function config() {
     return [
       'title' => 'Norwegian Krone',

@@ -12,6 +12,7 @@ namespace Money;
 
 use InvalidArgumentException;
 use Money\Currency\CurrencyInterface;
+use Money\Currency\Proxy as CurrencyProxy;
 
 class Money
 {
@@ -53,10 +54,9 @@ class Money
    */
   public static function __callStatic($method, $arguments)
   {
-    $currency = $method;
-    $currency_object = 'Money\\Currency\\Currency'.$currency;
-    
-    return new Money($arguments[0], new $currency_object);
+    $currency = CurrencyProxy::determine($method);
+
+    return new Money($arguments[0], new $currency);
   }
 
   /**

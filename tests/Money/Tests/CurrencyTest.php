@@ -11,7 +11,7 @@
 namespace Money\Tests;
 
 use PHPUnit_Framework_TestCase;
-use Money\Currency;
+use Money\Currency\Proxy as CurrencyProxy;
 
 /**
  * @package Money
@@ -21,10 +21,10 @@ class CurrencyTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-     $this->euro1 = new Currency('EUR');
-     $this->euro2 = new Currency('EUR');
-     $this->usd1 = new Currency('USD');
-     $this->usd2 = new Currency('USD');
+     $this->euro1 = CurrencyProxy::determine('EUR');
+     $this->euro2 = CurrencyProxy::determine('EUR');
+     $this->usd1 = CurrencyProxy::determine('USD');
+     $this->usd2 = CurrencyProxy::determine('USD');
     }
 
     public function testDifferentInstancesAreEqual()
@@ -44,12 +44,12 @@ class CurrencyTest extends PHPUnit_Framework_TestCase
      );
     }
 
-    /**
-  * @test
-  * @expectedException \Money\UnknownCurrencyException
-  */
-    public function testCantInstantiateUnknownCurrency()
-    {
-     new Currency('unknown');
-    }
+  /**
+   * @test
+   * @expectedException \Money\Exception\UnknownCurrencyException
+   */
+  public function testCantInstantiateUnknownCurrency()
+  {
+    CurrencyProxy::determine('unknown');
+  }
 }
