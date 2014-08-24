@@ -33,7 +33,7 @@ class Money
    * Create a Money instance
    * @param  integer $amount    Amount, expressed in the smallest units of $currency (eg cents)
    * @param  Currency $currency
-   * @throws InvalidArgumentException
+   * @expectedException InvalidArgumentException
    */
   public function __construct($amount, CurrencyInterface $currency)
   {
@@ -69,7 +69,7 @@ class Money
   }
 
   /**
-   * @throws InvalidArgumentException
+   * @expectedException InvalidArgumentException
    */
   private function assertSameCurrency(Money $other)
   {
@@ -132,11 +132,33 @@ class Money
   }
 
   /**
+   * Return value in smallest unit (e.g. cents)
+   *
    * @return int
    */
   public function getAmount()
   {
     return $this->amount;
+  }
+
+  /**
+   * Alias to `getAmount`
+   *
+   * @return int
+   */
+  public function getCents()
+  {
+    return $this->getAmount();
+  }
+
+  /**
+   * Convert the amount to dollars
+   *
+   * @return float
+   */
+  public function getDollars()
+  {
+    return $this->amount/100;
   }
 
   /**
@@ -170,7 +192,7 @@ class Money
   }
 
   /**
-   * @throws InvalidArgumentException
+   * @expectedException InvalidArgumentException
    */
   private function assertOperand($operand)
   {
@@ -259,7 +281,7 @@ class Money
 
   /**
    * @param $string
-   * @throws InvalidArgumentException
+   * @expectedException InvalidArgumentException
    * @return int
    */
   public static function stringToUnits($string)
@@ -274,5 +296,21 @@ class Money
     $units .= isset($matches[5]) ? $matches[5] : "0";
 
     return (int) $units;
+  }
+
+  /**
+   * @return string
+   */
+  public function __toString()
+  {
+    return $this->currency->format($this->getDollars());
+  }
+
+  /**
+   * @return string
+   */
+  public function format()
+  {
+    return $this->currency->format($this->getDollars());
   }
 }

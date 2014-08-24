@@ -52,4 +52,9 @@ class CurrencyTest extends PHPUnit_Framework_TestCase
   {
     CurrencyProxy::determine('unknown');
   }
+
+  public function testCurrencyName()
+  {
+    $this->assertEquals((string) CurrencyProxy::determine('USD'), 'U.S. Dollar');
+  }
 }

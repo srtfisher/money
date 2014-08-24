@@ -5,6 +5,7 @@ namespace Money\Currency;
 /**
  * @package Money
  * @subpackage Currency
+ 
  */
 class CurrencyPhilippinePeso extends AbstractCurrency implements CurrencyInterface {
   public static function config() {

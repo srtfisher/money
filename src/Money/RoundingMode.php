@@ -27,7 +27,7 @@ class RoundingMode
   /**
   * Create a rounding mode
   * @param int $rounding_mode
-  * @throws InvalidArgumentException
+  * @expectedException InvalidArgumentException
   */
   public function __construct($rounding_mode)
   {

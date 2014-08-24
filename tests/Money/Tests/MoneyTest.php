@@ -231,11 +231,29 @@ class MoneyTest extends PHPUnit_Framework_TestCase
    );
   }
 
+  public function testDollars()
+  {
+    $this->assertEquals(Money::USD(1234)->getDollars(), 12.34);
+  }
+
+  public function testCents()
+  {
+    $this->assertEquals(Money::USD(1234)->getCents(), Money::USD(1234)->getUnits());
+  }
+
   /**
-  * @dataProvider provideStrings
-  */
+   * @dataProvider provideStrings
+   */
   public function testStringToUnits($string, $units)
   {
-   $this->assertEquals($units, Money::stringToUnits($string));
+    $this->assertEquals($units, Money::stringToUnits($string));
+  }
+
+  /**
+   * @expectedException InvalidArgumentException
+   */
+  public function testInvalidStringToUnits()
+  {
+    Money::stringToUnits('invalid units');
   }
 }

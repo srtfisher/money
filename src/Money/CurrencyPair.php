@@ -40,7 +40,7 @@ class CurrencyPair
     * @param Currency $baseCurrency
     * @param Currency $counterCurrency
     * @param float $ratio
-    * @throws InvalidArgumentException
+    * @expectedException InvalidArgumentException
     */
     public function __construct(CurrencyInterface $baseCurrency, CurrencyInterface $counterCurrency, $ratio)
     {
@@ -55,7 +55,7 @@ class CurrencyPair
 
     /**
     * @param  string $iso String representation of the form "EUR/USD 1.2500"
-    * @throws \Exception
+    * @expectedException \Exception
     * @return \Money\CurrencyPair
     */
     public static function createFromIso($iso)
@@ -81,7 +81,7 @@ class CurrencyPair
     * @param \Money\Money $money
     * @param        $rounding_mode
     * @return \Money\Money
-    * @throws InvalidArgumentException
+    * @expectedException InvalidArgumentException
     */
     public function convert(Money $money, RoundingMode $rounding_mode = null)
     {

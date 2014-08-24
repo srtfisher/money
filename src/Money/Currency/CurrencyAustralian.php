@@ -5,8 +5,9 @@ namespace Money\Currency;
 /**
  * @package Money
  * @subpackage Currency
+ * @codeCoverageIgnore
  */
-class CurrencyAustrialian extends AbstractCurrency implements CurrencyInterface {
+class CurrencyAustralian extends AbstractCurrency implements CurrencyInterface {
   public static function config() {
     return [
       'title' => 'Australian Dollar',

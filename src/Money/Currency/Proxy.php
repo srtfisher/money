@@ -44,7 +44,7 @@ class Proxy {
     return [
       'Euro'          => ['eur',],
       'USD'           => ['us', 'us dollar'],
-      'Austrialian'   => ['aud'],
+      'Australian'    => ['aud'],
       'Pound'         => ['gbp'],
       'Yen'           => ['jpy',]
     ];
@@ -61,5 +61,13 @@ class Proxy {
     $class = $namespace . $name;
 
     return (class_exists($class)) ? new $class : null;
+  }
+
+  /**
+   * Call static proxy
+   */
+  public static function __callStatic($name, $arguments)
+  {
+    return self::determine($name);
   }
 }

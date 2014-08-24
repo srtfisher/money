@@ -46,30 +46,21 @@ abstract class AbstractCurrency {
    */
   public function format($number, $symbol_style = '%symbol%', $inverse = false, $use_space = false)
   {
-    $config = self::config();
+    $config = $this->config();
 
 		$symbol_left    = $config['symbol_left'];
 		$symbol_right   = $config['symbol_right'];
 		$decimal_place  = $config['decimal_place'];
 		$decimal_point  = $config['decimal_point'];
 		$thousand_point = $config['thousand_point'];
-
-    if ($value = $this->config['value']) {
-   if ( $inverse ) {
-     $value = $number * (1 / $value);
-   } else {
-     $value = $number * $value;
-   }
-    } else {
-   $value = $number;
-    }
+    $value = $number;
 
     $string = '';
 
 		if ($symbol_left) {
-   $string .= str_replace('%symbol%', $symbol_left, $symbol_style);
+      $string .= str_replace('%symbol%', $symbol_left, $symbol_style);
 
-   if ($use_space) $string .= ' ';
+      if ($use_space) $string .= ' ';
     }
 
 		$string .= number_format(round($value, (int)$decimal_place), (int)$decimal_place, $decimal_point, $thousand_point);
