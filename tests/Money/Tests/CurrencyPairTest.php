@@ -127,28 +127,28 @@ class CurrencyPairTest extends PHPUnit_Framework_TestCase
     $eur = CurrencyProxy::determine('EUR');
     $gbp = CurrencyProxy::determine('GBP');
 
-   return array(
-    'Base Mismatch EUR != GBP' => array(
-     new CurrencyPair($eur, $usd, 1.2500),
-     new CurrencyPair($gbp, $usd, 1.2500),
-     false
+    return array(
+      'Base Mismatch EUR != GBP' => array(
+      new CurrencyPair($eur, $usd, 1.2500),
+      new CurrencyPair($gbp, $usd, 1.2500),
+      false
     ),
     'Counter Mismatch USD != GBP' => array(
-     new CurrencyPair($eur, $usd, 1.2500),
-     new CurrencyPair($eur, $gbp, 1.2500),
-     false
+      new CurrencyPair($eur, $usd, 1.2500),
+      new CurrencyPair($eur, $gbp, 1.2500),
+      false
     ),
     'Ratio Mismatch 1.2500 != 1.5000' => array(
-     new CurrencyPair($eur, $usd, 1.2500),
-     new CurrencyPair($eur, $usd, 1.5000),
-     false
+      new CurrencyPair($eur, $usd, 1.2500),
+      new CurrencyPair($eur, $usd, 1.5000),
+      false
     ),
-    'Full Equality EUR/USD 1.2500' => array(
-     new CurrencyPair($eur, $usd, 1.2500),
-     new CurrencyPair($eur, $usd, 1.2500),
-     true
-    ),
-   );
+      'Full Equality EUR/USD 1.2500' => array(
+      new CurrencyPair($eur, $usd, 1.2500),
+      new CurrencyPair($eur, $usd, 1.2500),
+        true
+      ),
+    );
   }
 
   public function provideNonNumericRatio()

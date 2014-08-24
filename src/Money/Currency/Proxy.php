@@ -42,11 +42,11 @@ class Proxy {
   public static function aliases()
   {
     return [
-      'Euro'  => ['eur',],
-      'USD'   => ['us', 'us dollar'],
-      'Austrialian' => ['aud'],
-      
-      'Yen'   => ['jpy',]
+      'Euro'          => ['eur',],
+      'USD'           => ['us', 'us dollar'],
+      'Austrialian'   => ['aud'],
+      'Pound'         => ['gbp'],
+      'Yen'           => ['jpy',]
     ];
   }
 
