@@ -1,7 +1,7 @@
 Money
 =====
 
-[![Build Status](https://api.travis-ci.org/mathiasverraes/money.png?branch=master)](http://travis-ci.org/mathiasverraes/money)
+[![Build Status](https://api.travis-ci.org/srtfisher/money.png?branch=master)](http://travis-ci.org/srtfisher/money)
 
 PHP 5.3+ library to make working with money safer, easier, and fun!
 
@@ -22,6 +22,10 @@ list($part1, $part2, $part3) = $tenEur->allocate(array(1, 1, 1));
 assert($part1->equals(Money::Euro(334)));
 assert($part2->equals(Money::Euro(333)));
 assert($part3->equals(Money::Euro(333)));
+
+// Format
+// $1,234.56
+echo Money::USD(123456)->format();
 ```
 
 The documentation is available at http://money.readthedocs.org
@@ -35,9 +39,9 @@ Install the library using [composer][1]. Add the following to your `composer.jso
 ```json
 {
     "require": {
-     "mathiasverraes/money": "dev-master"
+      "srtfisher/money": "dev-master"
     },
-    "minimum-stability": "dev"    
+    "minimum-stability": "dev"
 }
 ```
 
